@@ -28,6 +28,7 @@ if ingredients_list:
     ingredients_string = ''
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
+        st.subheader(fruit_chosen + ' Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
         sf_df = st.dataframe(data =smoothiefroot_response.json(), use_container_width=True)
 
@@ -37,7 +38,7 @@ if ingredients_list:
                         values ('{ingredients_string}', '{name_on_order }')"""
     st.write(my_insert_stmt)
     # st.stop() 
-    #Prevent the app from moving on from here withj stop
+    #Prevent the app from moving on from here with stop
     time_to_insert = st.button('Submit Order')
     
     if time_to_insert:
